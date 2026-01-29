@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		2D0001 /* ViewShedApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D0000 /* ViewShedApp.swift */; };
 		2D0003 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D0002 /* ContentView.swift */; };
+		2D0200 /* MapboxMaps in Frameworks */ = {isa = PBXBuildFile; productRef = 2D0201 /* MapboxMaps */; };
+		2D0202 /* Turf in Frameworks */ = {isa = PBXBuildFile; productRef = 2D0203 /* Turf */; };
 		2D1001 /* ViewShedRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1000 /* ViewShedRecord.swift */; };
 		2D1003 /* ViewedAreaEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1002 /* ViewedAreaEntity.swift */; };
 		2D1005 /* LocationSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1004 /* LocationSnapshot.swift */; };
@@ -25,20 +27,18 @@
 		2D101B /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D101A /* MapViewModel.swift */; };
 		2D101D /* MapControlsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D101C /* MapControlsView.swift */; };
 		2D101F /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D101E /* AppConstants.swift */; };
+		2D102B /* SimulationPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D102A /* SimulationPath.swift */; };
 		2D1021 /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1020 /* UIColor+Hex.swift */; };
 		2D1023 /* TerrainRGBDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1022 /* TerrainRGBDecoder.swift */; };
 		2D1025 /* TerrainTileCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1024 /* TerrainTileCache.swift */; };
 		2D1027 /* ElevationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1026 /* ElevationProvider.swift */; };
 		2D1029 /* ViewshedCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1028 /* ViewshedCalculator.swift */; };
-		2D0200 /* MapboxMaps in Frameworks */ = {isa = PBXBuildFile; productRef = 2D0201 /* MapboxMaps */; };
-		2D0202 /* Turf in Frameworks */ = {isa = PBXBuildFile; productRef = 2D0203 /* Turf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		2D0000 /* ViewShedApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewShedApp.swift; sourceTree = "<group>"; };
 		2D0002 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		2D0004 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2DFFFF /* ViewShed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ViewShed.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D1000 /* ViewShedRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewShedRecord.swift; sourceTree = "<group>"; };
 		2D1002 /* ViewedAreaEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewedAreaEntity.swift; sourceTree = "<group>"; };
 		2D1004 /* LocationSnapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSnapshot.swift; sourceTree = "<group>"; };
@@ -55,11 +55,13 @@
 		2D101A /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		2D101C /* MapControlsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapControlsView.swift; sourceTree = "<group>"; };
 		2D101E /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
+		2D102A /* SimulationPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulationPath.swift; sourceTree = "<group>"; };
 		2D1020 /* UIColor+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Hex.swift"; sourceTree = "<group>"; };
 		2D1022 /* TerrainRGBDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerrainRGBDecoder.swift; sourceTree = "<group>"; };
 		2D1024 /* TerrainTileCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerrainTileCache.swift; sourceTree = "<group>"; };
 		2D1026 /* ElevationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElevationProvider.swift; sourceTree = "<group>"; };
 		2D1028 /* ViewshedCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewshedCalculator.swift; sourceTree = "<group>"; };
+		2DFFFF /* ViewShed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ViewShed.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,36 +77,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2DFFF9 = {
-			isa = PBXGroup;
-			children = (
-				2DFFFB /* ViewShed */,
-				2DFFFA /* Products */,
-			);
-			sourceTree = "<group>";
-		};
-		2DFFFA /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				2DFFFF /* ViewShed.app */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		2DFFFB /* ViewShed */ = {
-			isa = PBXGroup;
-			children = (
-				2D0000 /* ViewShedApp.swift */,
-				2D0002 /* ContentView.swift */,
-				2D0004 /* Info.plist */,
-				2D2000 /* Core */,
-				2D2010 /* Infrastructure */,
-				2D2020 /* Presentation */,
-				2D2030 /* Utilities */,
-			);
-			path = ViewShed;
-			sourceTree = "<group>";
-		};
 		2D2000 /* Core */ = {
 			isa = PBXGroup;
 			children = (
@@ -122,14 +94,6 @@
 				2D2004 /* Services */,
 			);
 			path = Domain;
-			sourceTree = "<group>";
-		};
-		2D2004 /* Services */ = {
-			isa = PBXGroup;
-			children = (
-				2D1028 /* ViewshedCalculator.swift */,
-			);
-			path = Services;
 			sourceTree = "<group>";
 		};
 		2D2002 /* Models */ = {
@@ -151,6 +115,14 @@
 				2D1014 /* ViewedAreaRepositoryProtocol.swift */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		2D2004 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				2D1028 /* ViewshedCalculator.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		2D2005 /* Data */ = {
@@ -181,6 +153,14 @@
 			path = Infrastructure;
 			sourceTree = "<group>";
 		};
+		2D2011 /* MapBox */ = {
+			isa = PBXGroup;
+			children = (
+				2D1016 /* MapBoxManager.swift */,
+			);
+			path = MapBox;
+			sourceTree = "<group>";
+		};
 		2D2012 /* Elevation */ = {
 			isa = PBXGroup;
 			children = (
@@ -189,14 +169,6 @@
 				2D1026 /* ElevationProvider.swift */,
 			);
 			path = Elevation;
-			sourceTree = "<group>";
-		};
-		2D2011 /* MapBox */ = {
-			isa = PBXGroup;
-			children = (
-				2D1016 /* MapBoxManager.swift */,
-			);
-			path = MapBox;
 			sourceTree = "<group>";
 		};
 		2D2020 /* Presentation */ = {
@@ -230,6 +202,7 @@
 			isa = PBXGroup;
 			children = (
 				2D101E /* AppConstants.swift */,
+				2D102A /* SimulationPath.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -240,6 +213,36 @@
 				2D1020 /* UIColor+Hex.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		2DFFF9 = {
+			isa = PBXGroup;
+			children = (
+				2DFFFB /* ViewShed */,
+				2DFFFA /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		2DFFFA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2DFFFF /* ViewShed.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2DFFFB /* ViewShed */ = {
+			isa = PBXGroup;
+			children = (
+				2D0000 /* ViewShedApp.swift */,
+				2D0002 /* ContentView.swift */,
+				2D0004 /* Info.plist */,
+				2D2000 /* Core */,
+				2D2010 /* Infrastructure */,
+				2D2020 /* Presentation */,
+				2D2030 /* Utilities */,
+			);
+			path = ViewShed;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -325,6 +328,7 @@
 				2D101B /* MapViewModel.swift in Sources */,
 				2D101D /* MapControlsView.swift in Sources */,
 				2D101F /* AppConstants.swift in Sources */,
+				2D102B /* SimulationPath.swift in Sources */,
 				2D1021 /* UIColor+Hex.swift in Sources */,
 				2D1023 /* TerrainRGBDecoder.swift in Sources */,
 				2D1025 /* TerrainTileCache.swift in Sources */,
@@ -343,7 +347,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = H93VV3M5NQ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = ViewShed/Info.plist;
@@ -373,7 +377,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = H93VV3M5NQ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = ViewShed/Info.plist;
@@ -569,7 +573,6 @@
 			productName = Turf;
 		};
 /* End XCSwiftPackageProductDependency section */
-
 	};
 	rootObject = 2DFFF8 /* Project object */;
 }

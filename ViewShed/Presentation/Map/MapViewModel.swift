@@ -23,11 +23,21 @@ final class MapViewModel: ObservableObject {
     @Published var viewshedProgress: Double = 0
     @Published var viewshedGeoJSON: String?
     @Published var lastCalculationTime: TimeInterval?
+    
+    // MARK: - Download Properties
+    @Published var isDownloading = false
+    @Published var downloadProgress: Double = 0
+    
+    // MARK: - Simulation Properties
+    @Published var isSimulating = false
+    private var simulationTask: Task<Void, Never>?
+    private var cumulativeCells: Set<GridCell> = []
 
     // MARK: - Private Properties
 
     private var cancellables = Set<AnyCancellable>()
     private let viewshedCalculator = ViewshedCalculator()
+    private let elevationProvider = ElevationProvider.shared
 
     // MARK: - Initialization
 
@@ -37,12 +47,50 @@ final class MapViewModel: ObservableObject {
         setupObservers()
     }
     
+    // MARK: - Offline Support
+    
+    func downloadOfflineArea() {
+        guard let location = mapCenter as Coordinate? else { return }
+        guard !isDownloading else { return }
+        
+        isDownloading = true
+        downloadProgress = 0
+        
+        Task {
+            // Download area matching calculation distance
+            let success = await elevationProvider.downloadRegion(
+                center: location,
+                radiusMeters: AppConstants.ViewShed.maxDistance
+            ) { [weak self] completed, total in
+                Task { @MainActor in
+                    self?.downloadProgress = Double(completed) / Double(total)
+                }
+            }
+            
+            await MainActor.run {
+                self.isDownloading = false
+                if success {
+                    // Show success message briefly?
+                    print("Offline area downloaded successfully")
+                } else {
+                    self.errorMessage = "Failed to download offline area"
+                }
+            }
+        }
+    }
+    
     // MARK: - Map Interaction
     
     func handleMapTap(_ coordinate: Coordinate) {
+        // Stop simulation if running
+        if isSimulating {
+            stopSimulation()
+        }
+        
         selectedLocation = coordinate
-        // Clear previous viewshed when location changes
+        // Clear previous viewshed when location changes manually
         viewshedGeoJSON = nil
+        cumulativeCells.removeAll()
     }
 
     // MARK: - Setup
@@ -147,6 +195,11 @@ final class MapViewModel: ObservableObject {
 
         isCalculatingViewshed = true
         viewshedProgress = 0
+        
+        // If not simulating, start fresh
+        if !isSimulating {
+            cumulativeCells.removeAll()
+        }
 
         Task {
             let result = await viewshedCalculator.calculateViewshed(from: location) { [weak self] progress in
@@ -157,14 +210,81 @@ final class MapViewModel: ObservableObject {
 
             // Convert to grid and GeoJSON
             let cells = viewshedCalculator.pointsToGrid(result)
-            let geoJSON = ViewshedCalculator.gridToGeoJSON(cells)
-
+            
             await MainActor.run {
+                if self.isSimulating {
+                    self.cumulativeCells.formUnion(cells)
+                } else {
+                    self.cumulativeCells = cells
+                }
+                
+                let geoJSON = ViewshedCalculator.gridToGeoJSON(self.cumulativeCells)
                 self.viewshedGeoJSON = geoJSON
                 self.lastCalculationTime = result.calculationTime
                 self.isCalculatingViewshed = false
-                print("Viewshed complete: \(result.visiblePoints.count) points, \(cells.count) cells, \(String(format: "%.2f", result.calculationTime))s")
+                print("Viewshed complete: \(result.visiblePoints.count) points, \(self.cumulativeCells.count) cumulative cells")
             }
         }
+    }
+    
+    // MARK: - Simulation
+    
+    func toggleSimulation() {
+        if isSimulating {
+            stopSimulation()
+        } else {
+            startSimulation()
+        }
+    }
+    
+    private func startSimulation() {
+        isSimulating = true
+        cumulativeCells.removeAll() // Start fresh
+        
+        // Use Highway 2 path (Scenic -> Berne)
+        // Generate 50 points for a smooth but reasonably fast simulation
+        let path = SimulationPath.interpolatedPath(steps: 50)
+        
+        // Initial move to start
+        if let start = path.first {
+            selectedLocation = start
+            mapCenter = start
+            recenterRequestId = UUID()
+        }
+        
+        simulationTask = Task {
+            for coordinate in path {
+                if Task.isCancelled { break }
+                
+                await MainActor.run {
+                    self.selectedLocation = coordinate
+                    // Move camera to follow
+                    self.mapCenter = coordinate
+                    self.recenterRequestId = UUID()
+                }
+                
+                // Calculate viewshed
+                let result = await viewshedCalculator.calculateViewshed(from: coordinate)
+                let cells = viewshedCalculator.pointsToGrid(result)
+                
+                await MainActor.run {
+                    self.cumulativeCells.formUnion(cells)
+                    self.viewshedGeoJSON = ViewshedCalculator.gridToGeoJSON(self.cumulativeCells)
+                }
+                
+                // Smooth animation: 0.2s delay
+                try? await Task.sleep(nanoseconds: 200_000_000)
+            }
+            
+            await MainActor.run {
+                self.isSimulating = false
+            }
+        }
+    }
+    
+    private func stopSimulation() {
+        isSimulating = false
+        simulationTask?.cancel()
+        simulationTask = nil
     }
 }

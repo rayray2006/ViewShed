@@ -138,9 +138,16 @@ final class ElevationProvider {
         radiusMeters: Double,
         progress: @escaping (Int, Int) -> Void
     ) async -> Bool {
+        print("🌍 Calculating tiles for region: \(center.latitude), \(center.longitude) radius: \(radiusMeters)m")
         let tiles = tilesForRegion(center: center, radiusMeters: radiusMeters)
         let total = tiles.count
+        print("📦 Total tiles to download: \(total)")
+        
+        guard total > 0 else { return true }
+        
         var completed = 0
+        // Report 0%
+        progress(0, total)
 
         await withTaskGroup(of: Bool.self) { group in
             // Limit concurrent downloads
@@ -149,23 +156,29 @@ final class ElevationProvider {
             for (x, y) in tiles {
                 group.addTask {
                     await semaphore.wait()
-                    defer { Task { await semaphore.signal() } }
-
-                    if self.cache.hasTile(x: x, y: y, zoom: self.zoom) {
-                        return true
-                    }
-
-                    let result = await self.downloadTile(x: x, y: y)
-                    return result != nil
+                    // Use a do-block to ensure signal is called
+                    let result: Bool = await {
+                        if self.cache.hasTile(x: x, y: y, zoom: self.zoom) {
+                            return true
+                        }
+                        let res = await self.downloadTile(x: x, y: y)
+                        return res != nil
+                    }()
+                    await semaphore.signal()
+                    return result
                 }
             }
 
             for await _ in group {
                 completed += 1
                 progress(completed, total)
+                if completed % 10 == 0 {
+                    print("⬇️ Download progress: \(completed)/\(total)")
+                }
             }
         }
-
+        
+        print("✅ Download region complete")
         return true
     }
 

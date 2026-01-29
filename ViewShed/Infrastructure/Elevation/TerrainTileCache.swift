@@ -25,8 +25,8 @@ final class TerrainTileCache {
         try? fileManager.createDirectory(at: cacheDirectory, withIntermediateDirectories: true)
 
         // Configure memory cache
-        memoryCache.countLimit = 100 // Keep up to 100 tiles in memory
-        memoryCache.totalCostLimit = 100 * 512 * 512 * 4 // ~100MB
+        memoryCache.countLimit = 300 // Increased to support larger areas
+        memoryCache.totalCostLimit = 300 * 512 * 512 * 4 // ~300MB
     }
 
     // MARK: - Cache Key
@@ -48,20 +48,24 @@ final class TerrainTileCache {
 
         // Check memory cache first
         if let cached = memoryCache.object(forKey: key) {
+            // print("📦 Memory Cache HIT: \(key)")
             return cached.grid
         }
 
         // Check disk cache
         let path = filePath(x: x, y: y, zoom: zoom)
         guard fileManager.fileExists(atPath: path.path) else {
+            // print("❌ Cache MISS: \(key)")
             return nil
         }
 
         do {
+            let start = Date()
             let data = try Data(contentsOf: path)
             if let grid = deserializeGrid(data) {
                 // Store in memory cache
                 memoryCache.setObject(ElevationGrid(grid: grid), forKey: key)
+                // print("💾 Disk Cache HIT: \(key) (\(String(format: "%.3f", Date().timeIntervalSince(start)))s)")
                 return grid
             }
         } catch {

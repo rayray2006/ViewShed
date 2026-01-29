@@ -10,6 +10,49 @@ struct MapControlsView: View {
                 Spacer()
 
                 VStack(spacing: 12) {
+                    // Download Offline Area button
+                    Button(action: {
+                        viewModel.downloadOfflineArea()
+                    }) {
+                        ZStack {
+                            if viewModel.isDownloading {
+                                // Progress ring
+                                Circle()
+                                    .stroke(Color.white.opacity(0.3), lineWidth: 3)
+                                    .frame(width: 38, height: 38)
+                                Circle()
+                                    .trim(from: 0, to: viewModel.downloadProgress)
+                                    .stroke(Color.white, lineWidth: 3)
+                                    .frame(width: 38, height: 38)
+                                    .rotationEffect(.degrees(-90))
+                            } else {
+                                Image(systemName: "arrow.down.circle.fill")
+                                    .font(.system(size: 20))
+                                    .foregroundColor(.white)
+                            }
+                        }
+                        .frame(width: 44, height: 44)
+                        .background(viewModel.isDownloading ? Color.orange : Color.green)
+                        .clipShape(Circle())
+                        .shadow(radius: 4)
+                    }
+                    .disabled(viewModel.isDownloading)
+                    .accessibilityLabel("Download offline area")
+                    
+                    // Simulation button
+                    Button(action: {
+                        viewModel.toggleSimulation()
+                    }) {
+                        Image(systemName: viewModel.isSimulating ? "stop.fill" : "play.fill")
+                            .font(.system(size: 20))
+                            .foregroundColor(.white)
+                            .frame(width: 44, height: 44)
+                            .background(viewModel.isSimulating ? Color.red : Color.blue)
+                            .clipShape(Circle())
+                            .shadow(radius: 4)
+                    }
+                    .accessibilityLabel(viewModel.isSimulating ? "Stop simulation" : "Start simulation")
+                    
                     // Calculate viewshed button
                     Button(action: {
                         viewModel.calculateViewshed()

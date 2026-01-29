@@ -5,8 +5,8 @@ import CoreLocation
 enum AppConstants {
     // MARK: - Viewshed Calculation Parameters
     enum ViewShed {
-        /// Maximum distance for viewshed calculation in meters (10km default)
-        static let maxDistance: Double = 10_000
+        /// Maximum distance for viewshed calculation in meters (3km default)
+        static let maxDistance: Double = 3_000
 
         /// Angular resolution in degrees (1 degree = 360 rays)
         static let angularResolution: Double = 1.0
