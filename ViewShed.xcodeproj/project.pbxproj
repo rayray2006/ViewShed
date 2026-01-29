@@ -1,0 +1,575 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2D0001 /* ViewShedApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D0000 /* ViewShedApp.swift */; };
+		2D0003 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D0002 /* ContentView.swift */; };
+		2D1001 /* ViewShedRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1000 /* ViewShedRecord.swift */; };
+		2D1003 /* ViewedAreaEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1002 /* ViewedAreaEntity.swift */; };
+		2D1005 /* LocationSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1004 /* LocationSnapshot.swift */; };
+		2D1007 /* ElevationTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1006 /* ElevationTile.swift */; };
+		2D1009 /* Coordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1008 /* Coordinate.swift */; };
+		2D100B /* ViewShed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D100A /* ViewShed.swift */; };
+		2D100D /* ViewedArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D100C /* ViewedArea.swift */; };
+		2D100F /* LocationServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D100E /* LocationServiceProtocol.swift */; };
+		2D1011 /* ElevationProviderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1010 /* ElevationProviderProtocol.swift */; };
+		2D1013 /* ViewShedRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1012 /* ViewShedRepositoryProtocol.swift */; };
+		2D1015 /* ViewedAreaRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1014 /* ViewedAreaRepositoryProtocol.swift */; };
+		2D1017 /* MapBoxManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1016 /* MapBoxManager.swift */; };
+		2D1019 /* MapBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1018 /* MapBoxView.swift */; };
+		2D101B /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D101A /* MapViewModel.swift */; };
+		2D101D /* MapControlsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D101C /* MapControlsView.swift */; };
+		2D101F /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D101E /* AppConstants.swift */; };
+		2D1021 /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1020 /* UIColor+Hex.swift */; };
+		2D1023 /* TerrainRGBDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1022 /* TerrainRGBDecoder.swift */; };
+		2D1025 /* TerrainTileCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1024 /* TerrainTileCache.swift */; };
+		2D1027 /* ElevationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1026 /* ElevationProvider.swift */; };
+		2D1029 /* ViewshedCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1028 /* ViewshedCalculator.swift */; };
+		2D0200 /* MapboxMaps in Frameworks */ = {isa = PBXBuildFile; productRef = 2D0201 /* MapboxMaps */; };
+		2D0202 /* Turf in Frameworks */ = {isa = PBXBuildFile; productRef = 2D0203 /* Turf */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		2D0000 /* ViewShedApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewShedApp.swift; sourceTree = "<group>"; };
+		2D0002 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		2D0004 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2DFFFF /* ViewShed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ViewShed.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D1000 /* ViewShedRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewShedRecord.swift; sourceTree = "<group>"; };
+		2D1002 /* ViewedAreaEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewedAreaEntity.swift; sourceTree = "<group>"; };
+		2D1004 /* LocationSnapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSnapshot.swift; sourceTree = "<group>"; };
+		2D1006 /* ElevationTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElevationTile.swift; sourceTree = "<group>"; };
+		2D1008 /* Coordinate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinate.swift; sourceTree = "<group>"; };
+		2D100A /* ViewShed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewShed.swift; sourceTree = "<group>"; };
+		2D100C /* ViewedArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewedArea.swift; sourceTree = "<group>"; };
+		2D100E /* LocationServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationServiceProtocol.swift; sourceTree = "<group>"; };
+		2D1010 /* ElevationProviderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElevationProviderProtocol.swift; sourceTree = "<group>"; };
+		2D1012 /* ViewShedRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewShedRepositoryProtocol.swift; sourceTree = "<group>"; };
+		2D1014 /* ViewedAreaRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewedAreaRepositoryProtocol.swift; sourceTree = "<group>"; };
+		2D1016 /* MapBoxManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapBoxManager.swift; sourceTree = "<group>"; };
+		2D1018 /* MapBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapBoxView.swift; sourceTree = "<group>"; };
+		2D101A /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
+		2D101C /* MapControlsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapControlsView.swift; sourceTree = "<group>"; };
+		2D101E /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
+		2D1020 /* UIColor+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Hex.swift"; sourceTree = "<group>"; };
+		2D1022 /* TerrainRGBDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerrainRGBDecoder.swift; sourceTree = "<group>"; };
+		2D1024 /* TerrainTileCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerrainTileCache.swift; sourceTree = "<group>"; };
+		2D1026 /* ElevationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElevationProvider.swift; sourceTree = "<group>"; };
+		2D1028 /* ViewshedCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewshedCalculator.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2DFFFC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2D0200 /* MapboxMaps in Frameworks */,
+				2D0202 /* Turf in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2DFFF9 = {
+			isa = PBXGroup;
+			children = (
+				2DFFFB /* ViewShed */,
+				2DFFFA /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		2DFFFA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2DFFFF /* ViewShed.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2DFFFB /* ViewShed */ = {
+			isa = PBXGroup;
+			children = (
+				2D0000 /* ViewShedApp.swift */,
+				2D0002 /* ContentView.swift */,
+				2D0004 /* Info.plist */,
+				2D2000 /* Core */,
+				2D2010 /* Infrastructure */,
+				2D2020 /* Presentation */,
+				2D2030 /* Utilities */,
+			);
+			path = ViewShed;
+			sourceTree = "<group>";
+		};
+		2D2000 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				2D2001 /* Domain */,
+				2D2005 /* Data */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		2D2001 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				2D2002 /* Models */,
+				2D2003 /* Protocols */,
+				2D2004 /* Services */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		2D2004 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				2D1028 /* ViewshedCalculator.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		2D2002 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				2D1008 /* Coordinate.swift */,
+				2D100A /* ViewShed.swift */,
+				2D100C /* ViewedArea.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		2D2003 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				2D100E /* LocationServiceProtocol.swift */,
+				2D1010 /* ElevationProviderProtocol.swift */,
+				2D1012 /* ViewShedRepositoryProtocol.swift */,
+				2D1014 /* ViewedAreaRepositoryProtocol.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		2D2005 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				2D2006 /* Models */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		2D2006 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				2D1000 /* ViewShedRecord.swift */,
+				2D1002 /* ViewedAreaEntity.swift */,
+				2D1004 /* LocationSnapshot.swift */,
+				2D1006 /* ElevationTile.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		2D2010 /* Infrastructure */ = {
+			isa = PBXGroup;
+			children = (
+				2D2011 /* MapBox */,
+				2D2012 /* Elevation */,
+			);
+			path = Infrastructure;
+			sourceTree = "<group>";
+		};
+		2D2012 /* Elevation */ = {
+			isa = PBXGroup;
+			children = (
+				2D1022 /* TerrainRGBDecoder.swift */,
+				2D1024 /* TerrainTileCache.swift */,
+				2D1026 /* ElevationProvider.swift */,
+			);
+			path = Elevation;
+			sourceTree = "<group>";
+		};
+		2D2011 /* MapBox */ = {
+			isa = PBXGroup;
+			children = (
+				2D1016 /* MapBoxManager.swift */,
+			);
+			path = MapBox;
+			sourceTree = "<group>";
+		};
+		2D2020 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				2D2021 /* Map */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		2D2021 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				2D1018 /* MapBoxView.swift */,
+				2D101A /* MapViewModel.swift */,
+				2D101C /* MapControlsView.swift */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
+		2D2030 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				2D2031 /* Constants */,
+				2D2032 /* Extensions */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		2D2031 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				2D101E /* AppConstants.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		2D2032 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				2D1020 /* UIColor+Hex.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		2DFFFE /* ViewShed */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2D0005 /* Build configuration list for PBXNativeTarget "ViewShed" */;
+			buildPhases = (
+				2DFFFD /* Sources */,
+				2DFFFC /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ViewShed;
+			packageProductDependencies = (
+				2D0201 /* MapboxMaps */,
+				2D0203 /* Turf */,
+			);
+			productName = ViewShed;
+			productReference = 2DFFFF /* ViewShed.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2DFFF8 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1520;
+				LastUpgradeCheck = 1520;
+				TargetAttributes = {
+					2DFFFE = {
+						CreatedOnToolsVersion = 15.2;
+					};
+				};
+			};
+			buildConfigurationList = 2DFFF7 /* Build configuration list for PBXProject "ViewShed" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 2DFFF9;
+			packageReferences = (
+				2D0100 /* XCRemoteSwiftPackageReference "mapbox-maps-ios" */,
+				2D0101 /* XCRemoteSwiftPackageReference "turf-swift" */,
+			);
+			productRefGroup = 2DFFFA /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				2DFFFE /* ViewShed */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2DFFFD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2D0001 /* ViewShedApp.swift in Sources */,
+				2D0003 /* ContentView.swift in Sources */,
+				2D1001 /* ViewShedRecord.swift in Sources */,
+				2D1003 /* ViewedAreaEntity.swift in Sources */,
+				2D1005 /* LocationSnapshot.swift in Sources */,
+				2D1007 /* ElevationTile.swift in Sources */,
+				2D1009 /* Coordinate.swift in Sources */,
+				2D100B /* ViewShed.swift in Sources */,
+				2D100D /* ViewedArea.swift in Sources */,
+				2D100F /* LocationServiceProtocol.swift in Sources */,
+				2D1011 /* ElevationProviderProtocol.swift in Sources */,
+				2D1013 /* ViewShedRepositoryProtocol.swift in Sources */,
+				2D1015 /* ViewedAreaRepositoryProtocol.swift in Sources */,
+				2D1017 /* MapBoxManager.swift in Sources */,
+				2D1019 /* MapBoxView.swift in Sources */,
+				2D101B /* MapViewModel.swift in Sources */,
+				2D101D /* MapControlsView.swift in Sources */,
+				2D101F /* AppConstants.swift in Sources */,
+				2D1021 /* UIColor+Hex.swift in Sources */,
+				2D1023 /* TerrainRGBDecoder.swift in Sources */,
+				2D1025 /* TerrainTileCache.swift in Sources */,
+				2D1027 /* ElevationProvider.swift in Sources */,
+				2D1029 /* ViewshedCalculator.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		2D0006 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = ViewShed/Info.plist;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.viewshed.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		2D0007 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = ViewShed/Info.plist;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.viewshed.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		2D0008 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		2D0009 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2D0005 /* Build configuration list for PBXNativeTarget "ViewShed" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2D0006 /* Debug */,
+				2D0007 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2DFFF7 /* Build configuration list for PBXProject "ViewShed" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2D0008 /* Debug */,
+				2D0009 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		2D0100 /* XCRemoteSwiftPackageReference "mapbox-maps-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/mapbox/mapbox-maps-ios.git";
+			requirement = {
+				kind = exactVersion;
+				version = 11.6.1;
+			};
+		};
+		2D0101 /* XCRemoteSwiftPackageReference "turf-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/mapbox/turf-swift.git";
+			requirement = {
+				kind = exactVersion;
+				version = 2.8.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		2D0201 /* MapboxMaps */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2D0100 /* XCRemoteSwiftPackageReference "mapbox-maps-ios" */;
+			productName = MapboxMaps;
+		};
+		2D0203 /* Turf */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2D0101 /* XCRemoteSwiftPackageReference "turf-swift" */;
+			productName = Turf;
+		};
+/* End XCSwiftPackageProductDependency section */
+
+	};
+	rootObject = 2DFFF8 /* Project object */;
+}
